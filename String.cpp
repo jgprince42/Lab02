@@ -12,7 +12,7 @@ String::String(const char* char_array)
    char* text = new char[sz+1];
    for (int i = 0; i < sz; i++)
    {
-      text[i] = char_array[i];
+      text[i] = char_array[i];//butts
    }
    text[sz] = 0;  //null terminator
    this->text = text;
