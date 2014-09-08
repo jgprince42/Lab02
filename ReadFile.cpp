@@ -4,7 +4,7 @@
 
 ReadFile* createReadFile(const char* file_name)
 {
-   ReadFile* rf = new ReadFile;
+   ReadFile* rf = ReadFile;
 
    rf->input_file.open(file_name);
    rf->closed = false;
@@ -13,18 +13,18 @@ ReadFile* createReadFile(const char* file_name)
    return rf;
 }
 
-void destroyReadFile(ReadFile* rf)
+ReadFile::~ReadFile(ReadFile* rf)
 {
    close(rf);
    delete rf;
 }
 
-bool eof(ReadFile* rf)
+bool ReadFile::eof(ReadFile* rf)
 {
    return rf->_eof;
 }
 
-void close(ReadFile* rf)
+void ReadFile::close(ReadFile* rf)
 {
    if (!rf->closed)
    {
@@ -33,7 +33,7 @@ void close(ReadFile* rf)
    }
 }
 
-String* readLine(ReadFile* rf)
+String* ReadFile::readLine(ReadFile* rf)
 {
    if (rf->closed) return NULL;
    if (rf->_eof) return NULL;
